@@ -23,13 +23,13 @@ jobs:
           pip install --upgrade pip
           pip install buildozer cython virtualenv
 
-      - name: Pre-accept All Android Licenses
+      - name: Setup Android SDK and Accept Licenses
         run: |
-          mkdir -p ~/.buildozer/android/platform/android-sdk/licenses
-          echo -e "\n89337d1a1b182fb149414017b44813876113531a\nd56f5187479791eabf883784b13075722bee5742\n24333f8a63b6825ea9c5514f83c2829b004d1fee" > ~/.buildozer/android/platform/android-sdk/licenses/android-sdk-license
-          echo -e "\n84831b9409646a3d80e4b83e860837976974e876\n\nd975f751698a77b662f1254ddbeed3901e976f5a" > ~/.buildozer/android/platform/android-sdk/licenses/android-sdk-preview-license
+          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
 
       - name: Build with Buildozer
+        env:
+          ANDROID_HOME: ${{ env.ANDROID_HOME }}
         run: |
           buildozer -v android debug
 
