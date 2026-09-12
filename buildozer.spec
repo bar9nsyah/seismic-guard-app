@@ -12,6 +12,9 @@ orientation = portrait
 fullscreen = 0
 android.permissions = INTERNET,VIBRATE,WAKE_LOCK
 
+# Kunci python-for-android agar tidak mengambil versi master Python 3.14 yang rusak
+p4a.branch = release-2024.01.21
+
 android.api = 33
 android.minapi = 21
 android.ndk = 25b
