@@ -270,6 +270,11 @@ class SeismicGuardApp(App):
                     break
                 time.sleep(1)
 
+    def on_pause(self):
+        return True
+
+    def on_resume(self):
+        pass
+
 if __name__ == '__main__':
     SeismicGuardApp().run()
-          
